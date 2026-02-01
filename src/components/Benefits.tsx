@@ -52,7 +52,7 @@ const Benefits = () => {
             Почему мы
           </span>
           <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">
-            <span className="text-gradient-gold">6 причин</span> выбрать нас
+            <span className="text-gradient-red">6 причин</span> выбрать нас
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Мы не просто моем машины — мы заботимся о вашем автомобиле как о

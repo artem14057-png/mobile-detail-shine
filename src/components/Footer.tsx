@@ -1,17 +1,18 @@
+import logo from "@/assets/logo.png";
+
 const Footer = () => {
   return (
     <footer className="py-12 border-t border-border/30">
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-serif font-bold text-gradient-gold">
-              LUXE
-            </span>
-            <span className="text-sm font-medium text-muted-foreground tracking-widest">
-              DETAILING
-            </span>
-          </div>
+          <a href="#" className="flex items-center">
+            <img 
+              src={logo} 
+              alt="BM Detailing" 
+              className="h-10 w-auto"
+            />
+          </a>
 
           {/* Links */}
           <nav className="flex flex-wrap items-center justify-center gap-6">
@@ -43,7 +44,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="text-sm text-muted-foreground">
-            © 2026 LUXE Detailing. Все права защищены.
+            © 2026 BM Detailing. Все права защищены.
           </div>
         </div>
       </div>

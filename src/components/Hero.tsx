@@ -30,7 +30,7 @@ const Hero = () => {
           {/* Heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight mb-6 animate-fade-up delay-100">
             Ваш автомобиль{" "}
-            <span className="text-gradient-gold">заслуживает</span>
+            <span className="text-gradient-red">заслуживает</span>
             <br />
             лучшего ухода
           </h1>
@@ -48,7 +48,7 @@ const Hero = () => {
               Записаться на детейлинг
               <ArrowRight className="w-5 h-5" />
             </Button>
-            <Button variant="goldOutline" size="xl">
+            <Button variant="redOutline" size="xl">
               Узнать цены
             </Button>
           </div>
@@ -56,19 +56,19 @@ const Hero = () => {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-border/30 animate-fade-up delay-400">
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-gradient-gold">500+</div>
+              <div className="text-3xl md:text-4xl font-bold text-gradient-red">500+</div>
               <div className="text-sm text-muted-foreground mt-1">
                 Довольных клиентов
               </div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-gradient-gold">5 лет</div>
+              <div className="text-3xl md:text-4xl font-bold text-gradient-red">5 лет</div>
               <div className="text-sm text-muted-foreground mt-1">
                 На рынке
               </div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-gradient-gold">24/7</div>
+              <div className="text-3xl md:text-4xl font-bold text-gradient-red">24/7</div>
               <div className="text-sm text-muted-foreground mt-1">
                 Работаем для вас
               </div>

@@ -75,7 +75,7 @@ const Services = () => {
             Наши услуги
           </span>
           <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">
-            Выберите <span className="text-gradient-gold">идеальный пакет</span>
+            Выберите <span className="text-gradient-red">идеальный пакет</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             От быстрой мойки до полного детейлинга с защитным покрытием — у нас
@@ -90,7 +90,7 @@ const Services = () => {
               key={service.id}
               className={`relative group rounded-2xl p-6 transition-all duration-500 hover-lift ${
                 service.popular
-                  ? "bg-gradient-gold gold-glow"
+                  ? "bg-gradient-red red-glow"
                   : "glass-card hover:border-primary/50"
               }`}
               style={{ animationDelay: `${index * 100}ms` }}
@@ -106,13 +106,13 @@ const Services = () => {
               <div
                 className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${
                   service.popular
-                    ? "bg-background/20"
+                    ? "bg-white/20"
                     : "bg-primary/10"
                 }`}
               >
                 <service.icon
                   className={`w-7 h-7 ${
-                    service.popular ? "text-background" : "text-primary"
+                    service.popular ? "text-white" : "text-primary"
                   }`}
                 />
               </div>
@@ -120,7 +120,7 @@ const Services = () => {
               {/* Content */}
               <h3
                 className={`text-xl font-bold mb-2 ${
-                  service.popular ? "text-background" : "text-foreground"
+                  service.popular ? "text-white" : "text-foreground"
                 }`}
               >
                 {service.name}
@@ -128,7 +128,7 @@ const Services = () => {
               <p
                 className={`text-sm mb-6 ${
                   service.popular
-                    ? "text-background/80"
+                    ? "text-white/80"
                     : "text-muted-foreground"
                 }`}
               >
@@ -139,7 +139,7 @@ const Services = () => {
               <div className="mb-6">
                 <span
                   className={`text-3xl font-bold ${
-                    service.popular ? "text-background" : "text-gradient-gold"
+                    service.popular ? "text-white" : "text-gradient-red"
                   }`}
                 >
                   {service.price}
@@ -147,7 +147,7 @@ const Services = () => {
                 <span
                   className={`text-sm ml-1 ${
                     service.popular
-                      ? "text-background/80"
+                      ? "text-white/80"
                       : "text-muted-foreground"
                   }`}
                 >
@@ -161,13 +161,13 @@ const Services = () => {
                   <li key={i} className="flex items-start gap-3">
                     <Check
                       className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
-                        service.popular ? "text-background" : "text-primary"
+                        service.popular ? "text-white" : "text-primary"
                       }`}
                     />
                     <span
                       className={`text-sm ${
                         service.popular
-                          ? "text-background/90"
+                          ? "text-white/90"
                           : "text-muted-foreground"
                       }`}
                     >
@@ -179,10 +179,10 @@ const Services = () => {
 
               {/* Button */}
               <Button
-                variant={service.popular ? "default" : "goldOutline"}
+                variant={service.popular ? "default" : "redOutline"}
                 className={`w-full ${
                   service.popular
-                    ? "bg-background text-primary hover:bg-background/90"
+                    ? "bg-white text-primary hover:bg-white/90"
                     : ""
                 }`}
               >

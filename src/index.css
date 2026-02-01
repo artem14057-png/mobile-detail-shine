@@ -15,8 +15,8 @@
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 38 92% 50%;
-    --primary-foreground: 0 0% 4%;
+    --primary: 0 75% 45%;
+    --primary-foreground: 0 0% 98%;
 
     --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 98%;
@@ -24,27 +24,31 @@
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 38 92% 50%;
-    --accent-foreground: 0 0% 4%;
+    --accent: 0 75% 45%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 18%;
     --input: 0 0% 18%;
-    --ring: 38 92% 50%;
+    --ring: 0 75% 45%;
 
     --radius: 0.5rem;
 
-    /* Custom tokens */
-    --gold: 38 92% 50%;
-    --gold-light: 38 85% 65%;
-    --gold-dark: 38 92% 35%;
+    /* Custom tokens - Red & Silver theme */
+    --red: 0 75% 45%;
+    --red-light: 0 70% 55%;
+    --red-dark: 0 80% 35%;
+    --silver: 0 0% 75%;
+    --silver-light: 0 0% 85%;
+    --silver-dark: 0 0% 55%;
     --surface-elevated: 0 0% 10%;
-    --gradient-gold: linear-gradient(135deg, hsl(38, 92%, 50%), hsl(28, 85%, 45%));
+    --gradient-red: linear-gradient(135deg, hsl(0, 75%, 45%), hsl(0, 80%, 35%));
+    --gradient-silver: linear-gradient(135deg, hsl(0, 0%, 75%), hsl(0, 0%, 55%));
     --gradient-dark: linear-gradient(180deg, hsl(0, 0%, 4%) 0%, hsl(0, 0%, 8%) 100%);
     --gradient-radial: radial-gradient(ellipse at center, hsl(0, 0%, 12%) 0%, hsl(0, 0%, 4%) 70%);
-    --shadow-gold: 0 4px 30px -5px hsl(38, 92%, 50%, 0.3);
+    --shadow-red: 0 4px 30px -5px hsl(0, 75%, 45%, 0.3);
     --shadow-elevated: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 
     --sidebar-background: 0 0% 98%;
@@ -79,13 +83,22 @@
 }
 
 @layer components {
-  .text-gradient-gold {
+  .text-gradient-red {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(38, 92%, 50%), hsl(28, 85%, 60%));
+    background-image: linear-gradient(135deg, hsl(0, 75%, 50%), hsl(0, 70%, 60%));
   }
 
-  .bg-gradient-gold {
-    background: linear-gradient(135deg, hsl(38, 92%, 50%), hsl(28, 85%, 45%));
+  .text-gradient-silver {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(0, 0%, 85%), hsl(0, 0%, 65%));
+  }
+
+  .bg-gradient-red {
+    background: linear-gradient(135deg, hsl(0, 75%, 45%), hsl(0, 80%, 35%));
+  }
+
+  .bg-gradient-silver {
+    background: linear-gradient(135deg, hsl(0, 0%, 75%), hsl(0, 0%, 55%));
   }
 
   .bg-gradient-dark {
@@ -96,8 +109,8 @@
     @apply bg-card/80 backdrop-blur-xl border border-border/50;
   }
 
-  .gold-glow {
-    box-shadow: 0 0 40px hsl(38, 92%, 50%, 0.15);
+  .red-glow {
+    box-shadow: 0 0 40px hsl(0, 75%, 45%, 0.15);
   }
 
   .section-padding {
