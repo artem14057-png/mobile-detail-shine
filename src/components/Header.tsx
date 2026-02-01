@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, Shield } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,24 +34,14 @@ const Header = () => {
       {/* Top Bar - Logo and Contact */}
       <div className="border-b border-border/30">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <a href="#" className="flex items-center gap-3">
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-gold rounded-sm flex items-center justify-center">
-                  <Shield className="w-7 h-7 text-background" />
-                </div>
-                <div className="absolute -top-1 -left-1 -right-1 h-2 bg-gradient-gold opacity-80" 
-                     style={{ clipPath: 'polygon(0 100%, 15% 0, 50% 30%, 85% 0, 100% 100%)' }} />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-serif font-bold text-gradient-gold tracking-wide">
-                  BM Detailing
-                </span>
-                <span className="text-[10px] font-medium text-muted-foreground tracking-[0.3em] uppercase">
-                  Premium Care
-                </span>
-              </div>
+            <a href="#" className="flex items-center">
+              <img 
+                src={logo} 
+                alt="BM Detailing" 
+                className="h-14 md:h-16 w-auto"
+              />
             </a>
 
             {/* Contact & Language */}
@@ -103,7 +94,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-border animate-fade-in">
+        <div className="md:hidden absolute top-20 left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-border animate-fade-in">
           <nav className="flex flex-col p-6 gap-2">
             {navLinks.map((link) => (
               <a
@@ -124,7 +115,7 @@ const Header = () => {
                 <span>+7 (999) 123-45-67</span>
               </a>
             </div>
-            <Button variant="gold" size="lg" className="mt-4">
+            <Button variant="red" size="lg" className="mt-4">
               Записаться
             </Button>
           </nav>

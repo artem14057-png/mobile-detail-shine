@@ -15,9 +15,10 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        gold: "bg-gradient-to-r from-[hsl(38,92%,50%)] to-[hsl(28,85%,45%)] text-[hsl(0,0%,4%)] hover:shadow-[0_4px_30px_-5px_hsl(38,92%,50%,0.4)] hover:scale-105",
-        goldOutline: "border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground",
-        hero: "bg-gradient-to-r from-[hsl(38,92%,50%)] to-[hsl(28,85%,45%)] text-[hsl(0,0%,4%)] text-base px-8 py-6 hover:shadow-[0_8px_40px_-5px_hsl(38,92%,50%,0.5)] hover:scale-105",
+        red: "bg-gradient-to-r from-[hsl(0,75%,45%)] to-[hsl(0,80%,35%)] text-[hsl(0,0%,98%)] hover:shadow-[0_4px_30px_-5px_hsl(0,75%,45%,0.4)] hover:scale-105",
+        redOutline: "border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground",
+        hero: "bg-gradient-to-r from-[hsl(0,75%,45%)] to-[hsl(0,80%,35%)] text-[hsl(0,0%,98%)] text-base px-8 py-6 hover:shadow-[0_8px_40px_-5px_hsl(0,75%,45%,0.5)] hover:scale-105",
+        silver: "bg-gradient-to-r from-[hsl(0,0%,75%)] to-[hsl(0,0%,55%)] text-[hsl(0,0%,4%)] hover:shadow-[0_4px_30px_-5px_hsl(0,0%,75%,0.4)] hover:scale-105",
       },
       size: {
         default: "h-10 px-4 py-2",

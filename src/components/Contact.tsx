@@ -36,7 +36,7 @@ const Contact = () => {
               Связаться с нами
             </span>
             <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">
-              Готовы <span className="text-gradient-gold">преобразить</span>
+              Готовы <span className="text-gradient-red">преобразить</span>
               <br />
               ваш автомобиль?
             </h2>
@@ -61,7 +61,7 @@ const Contact = () => {
               </a>
 
               <a
-                href="mailto:info@luxedetailing.ru"
+                href="mailto:info@bmdetailing.ru"
                 className="flex items-center gap-4 p-4 rounded-xl glass-card hover:border-primary/50 transition-all duration-300 group"
               >
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
@@ -69,7 +69,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">Email</div>
-                  <div className="font-semibold">info@luxedetailing.ru</div>
+                  <div className="font-semibold">info@bmdetailing.ru</div>
                 </div>
               </a>
 
@@ -102,7 +102,7 @@ const Contact = () => {
           </div>
 
           {/* Right Column - Form */}
-          <div className="glass-card rounded-2xl p-8 gold-glow">
+          <div className="glass-card rounded-2xl p-8 red-glow">
             <h3 className="text-2xl font-bold mb-2">Оставить заявку</h3>
             <p className="text-muted-foreground mb-8">
               Заполните форму и мы свяжемся с вами
@@ -178,7 +178,7 @@ const Contact = () => {
                 />
               </div>
 
-              <Button variant="gold" size="xl" className="w-full">
+              <Button variant="red" size="xl" className="w-full">
                 <Send className="w-5 h-5" />
                 Отправить заявку
               </Button>

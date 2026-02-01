@@ -33,7 +33,7 @@ const Gallery = () => {
             Наши работы
           </span>
           <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">
-            <span className="text-gradient-gold">До и после</span> детейлинга
+            <span className="text-gradient-red">До и после</span> детейлинга
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Посмотрите на реальные результаты нашей работы. Каждый автомобиль
