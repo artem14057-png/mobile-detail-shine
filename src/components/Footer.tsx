@@ -1,6 +1,9 @@
 import logo from "@/assets/logo.png";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="py-12 border-t border-border/30">
       <div className="container mx-auto px-4 md:px-8">
@@ -20,31 +23,31 @@ const Footer = () => {
               href="#services"
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
-              Услуги
+              {t.nav.services}
             </a>
             <a
               href="#gallery"
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
-              Галерея
+              {t.nav.gallery}
             </a>
             <a
               href="#benefits"
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
-              Преимущества
+              {t.nav.benefits}
             </a>
             <a
               href="#contact"
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
-              Контакты
+              {t.nav.contact}
             </a>
           </nav>
 
           {/* Copyright */}
           <div className="text-sm text-muted-foreground">
-            © 2026 BM Detailing. Все права защищены.
+            {t.footer.copyright}
           </div>
         </div>
       </div>
