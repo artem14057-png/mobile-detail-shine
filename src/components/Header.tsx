@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { useLanguage, Language } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +18,17 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "#home", label: "Главная" },
-    { href: "#services", label: "Услуги" },
-    { href: "#gallery", label: "Галерея" },
-    { href: "#benefits", label: "Преимущества" },
-    { href: "#contact", label: "Контакты" },
+    { href: "#home", label: t.nav.home },
+    { href: "#services", label: t.nav.services },
+    { href: "#gallery", label: t.nav.gallery },
+    { href: "#benefits", label: t.nav.benefits },
+    { href: "#contact", label: t.nav.contact },
+  ];
+
+  const languages: { code: Language; label: string }[] = [
+    { code: "ru", label: "RU" },
+    { code: "en", label: "EN" },
+    { code: "lv", label: "LV" },
   ];
 
   return (
@@ -47,16 +55,28 @@ const Header = () => {
             {/* Contact & Language */}
             <div className="hidden md:flex items-center gap-6">
               <a
-                href="tel:+79991234567"
+                href="tel:+37120000000"
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                <span>+7 (999) 123-45-67</span>
+                <span>+371 20 000 000</span>
               </a>
               <div className="flex items-center gap-1 text-xs">
-                <button className="px-2 py-1 text-primary font-medium">RU</button>
-                <span className="text-border">|</span>
-                <button className="px-2 py-1 text-muted-foreground hover:text-primary transition-colors">EN</button>
+                {languages.map((lang, index) => (
+                  <span key={lang.code} className="flex items-center">
+                    {index > 0 && <span className="text-border mx-1">|</span>}
+                    <button
+                      onClick={() => setLanguage(lang.code)}
+                      className={`px-2 py-1 transition-colors ${
+                        language === lang.code
+                          ? "text-primary font-medium"
+                          : "text-muted-foreground hover:text-primary"
+                      }`}
+                    >
+                      {lang.label}
+                    </button>
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -86,7 +106,7 @@ const Header = () => {
               </a>
             ))}
             <Button variant="ghost" size="sm" className="ml-4 text-primary-foreground border border-primary-foreground/30 hover:bg-white/10 hover:text-primary-foreground">
-              Записаться
+              {t.nav.bookNow}
             </Button>
           </nav>
         </div>
@@ -108,15 +128,30 @@ const Header = () => {
             ))}
             <div className="flex items-center gap-4 mt-4">
               <a
-                href="tel:+79991234567"
+                href="tel:+37120000000"
                 className="flex items-center gap-2 text-sm text-muted-foreground"
               >
                 <Phone className="w-4 h-4" />
-                <span>+7 (999) 123-45-67</span>
+                <span>+371 20 000 000</span>
               </a>
             </div>
+            <div className="flex items-center gap-2 mt-4">
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => setLanguage(lang.code)}
+                  className={`px-3 py-1 rounded text-sm transition-colors ${
+                    language === lang.code
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
+                >
+                  {lang.label}
+                </button>
+              ))}
+            </div>
             <Button variant="red" size="lg" className="mt-4">
-              Записаться
+              {t.nav.bookNow}
             </Button>
           </nav>
         </div>

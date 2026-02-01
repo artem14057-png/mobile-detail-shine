@@ -1,43 +1,47 @@
 import beforeAfter1 from "@/assets/before-after-1.jpg";
 import beforeAfter2 from "@/assets/before-after-2.jpg";
 import serviceProcess from "@/assets/service-process.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const galleryItems = [
-  {
-    id: 1,
-    image: beforeAfter1,
-    title: "Восстановление кузова",
-    description: "До и после полировки",
-  },
-  {
-    id: 2,
-    image: beforeAfter2,
-    title: "Химчистка салона",
-    description: "Полное преображение интерьера",
-  },
-  {
-    id: 3,
-    image: serviceProcess,
-    title: "Процесс работы",
-    description: "Профессиональное оборудование",
-  },
-];
+const galleryImages = [beforeAfter1, beforeAfter2, serviceProcess];
 
 const Gallery = () => {
+  const { t } = useLanguage();
+
+  const galleryItems = [
+    {
+      id: 1,
+      image: galleryImages[0],
+      title: t.gallery.before + " / " + t.gallery.after,
+      description: t.gallery.subtitle,
+    },
+    {
+      id: 2,
+      image: galleryImages[1],
+      title: t.gallery.before + " / " + t.gallery.after,
+      description: t.gallery.subtitle,
+    },
+    {
+      id: 3,
+      image: galleryImages[2],
+      title: t.gallery.subtitle,
+      description: t.gallery.description,
+    },
+  ];
+
   return (
     <section id="gallery" className="section-padding">
       <div className="container mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <span className="text-sm font-semibold text-primary tracking-widest uppercase mb-4 block">
-            Наши работы
+            {t.gallery.subtitle}
           </span>
           <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">
-            <span className="text-gradient-red">До и после</span> детейлинга
+            {t.gallery.title1} <span className="text-gradient-red">{t.gallery.titleHighlight}</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Посмотрите на реальные результаты нашей работы. Каждый автомобиль
-            получает максимум внимания и заботы
+            {t.gallery.description}
           </p>
         </div>
 
@@ -67,20 +71,6 @@ const Gallery = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* CTA */}
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
-            Хотите увидеть больше работ?
-          </p>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-4 transition-all duration-300"
-          >
-            Свяжитесь с нами для консультации
-            <span>→</span>
-          </a>
         </div>
       </div>
     </section>
