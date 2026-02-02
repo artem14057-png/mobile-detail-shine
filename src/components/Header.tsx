@@ -40,6 +40,39 @@ const Header = () => {
       }`}
     >
       {/* Top Bar - Logo and Contact */}
+      <div className="bg-[#4a1942]">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="flex items-center justify-between h-12">
+            {/* Phone */}
+            <a
+              href="tel:+37120000000"
+              className="hidden md:flex items-center gap-2 text-sm text-[#d4af37] hover:text-[#f0d060] transition-colors"
+            >
+              <Phone className="w-4 h-4" />
+              <span>+371 20 000 000</span>
+            </a>
+
+            {/* Language Switcher */}
+            <div className="flex items-center gap-4 ml-auto">
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => setLanguage(lang.code)}
+                  className={`text-sm font-medium tracking-wider transition-colors ${
+                    language === lang.code
+                      ? "text-[#d4af37]"
+                      : "text-white/80 hover:text-[#d4af37]"
+                  }`}
+                >
+                  {lang.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Logo Bar */}
       <div className="border-b border-border/30">
         <div className="container mx-auto px-4 md:px-8">
           <div className="flex items-center justify-between h-20">
@@ -52,34 +85,6 @@ const Header = () => {
               />
             </a>
 
-            {/* Contact & Language */}
-            <div className="hidden md:flex items-center gap-6">
-              <a
-                href="tel:+37120000000"
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                <span>+371 20 000 000</span>
-              </a>
-              <div className="flex items-center gap-1 text-xs">
-                {languages.map((lang, index) => (
-                  <span key={lang.code} className="flex items-center">
-                    {index > 0 && <span className="text-border mx-1">|</span>}
-                    <button
-                      onClick={() => setLanguage(lang.code)}
-                      className={`px-2 py-1 transition-colors ${
-                        language === lang.code
-                          ? "text-primary font-medium"
-                          : "text-muted-foreground hover:text-primary"
-                      }`}
-                    >
-                      {lang.label}
-                    </button>
-                  </span>
-                ))}
-              </div>
-            </div>
-
             {/* Mobile Menu Button */}
             <button
               className="md:hidden text-foreground p-2"
@@ -90,6 +95,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+
 
       {/* Navigation Bar */}
       <div className="hidden md:block bg-primary/95">
@@ -114,7 +120,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-border animate-fade-in">
+        <div className="md:hidden absolute top-[8rem] left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-border animate-fade-in">
           <nav className="flex flex-col p-6 gap-2">
             {navLinks.map((link) => (
               <a
@@ -142,8 +148,8 @@ const Header = () => {
                   onClick={() => setLanguage(lang.code)}
                   className={`px-3 py-1 rounded text-sm transition-colors ${
                     language === lang.code
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:text-primary"
+                      ? "bg-[#4a1942] text-[#d4af37]"
+                      : "text-muted-foreground hover:text-[#d4af37]"
                   }`}
                 >
                   {lang.label}
