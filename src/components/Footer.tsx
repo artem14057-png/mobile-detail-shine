@@ -32,10 +32,10 @@ const Footer = () => {
               {t.nav.gallery}
             </a>
             <a
-              href="#benefits"
+              href="#booking"
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
-              {t.nav.benefits}
+              {t.nav.booking}
             </a>
             <a
               href="#contact"
