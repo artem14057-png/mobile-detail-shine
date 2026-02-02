@@ -7,7 +7,7 @@ interface Translations {
     home: string;
     services: string;
     gallery: string;
-    benefits: string;
+    booking: string;
     contact: string;
     bookNow: string;
   };
@@ -48,15 +48,20 @@ interface Translations {
     before: string;
     after: string;
   };
-  benefits: {
+  booking: {
     subtitle: string;
     title1: string;
     titleHighlight: string;
     description: string;
-    items: {
-      title: string;
-      description: string;
-    }[];
+    selectDate: string;
+    selectTime: string;
+    selectedDate: string;
+    yourBooking: string;
+    at: string;
+    confirmBooking: string;
+    pleaseSelectDate: string;
+    weekDays: string[];
+    locale: string;
   };
   contact: {
     subtitle: string;
@@ -95,7 +100,7 @@ const translations: Record<Language, Translations> = {
       home: "Главная",
       services: "Услуги",
       gallery: "Галерея",
-      benefits: "Преимущества",
+      booking: "Дата/Время",
       contact: "Контакты",
       bookNow: "Записаться",
     },
@@ -181,41 +186,20 @@ const translations: Record<Language, Translations> = {
       before: "До",
       after: "После",
     },
-    benefits: {
-      subtitle: "Почему мы",
-      title1: "Преимущества",
-      titleHighlight: "BM Detailing",
-      description:
-        "Мы не просто моем машины — мы создаём уникальный опыт ухода за вашим автомобилем",
-      items: [
-        {
-          title: "Выезд к вам",
-          description:
-            "Мы приедем в любое удобное место — домой, в офис или на парковку",
-        },
-        {
-          title: "Премиум материалы",
-          description:
-            "Используем только профессиональную автохимию и оборудование",
-        },
-        {
-          title: "Опытные мастера",
-          description:
-            "Наши специалисты прошли обучение и имеют многолетний опыт",
-        },
-        {
-          title: "Гарантия качества",
-          description: "Даём гарантию на все виды работ и защитных покрытий",
-        },
-        {
-          title: "Удобное время",
-          description: "Работаем ежедневно с 8:00 до 22:00, включая выходные",
-        },
-        {
-          title: "Прозрачные цены",
-          description: "Фиксированные цены без скрытых платежей и доплат",
-        },
-      ],
+    booking: {
+      subtitle: "Онлайн запись",
+      title1: "Выберите",
+      titleHighlight: "дату и время",
+      description: "Выберите удобное время для записи на детейлинг вашего автомобиля",
+      selectDate: "Выберите дату",
+      selectTime: "Выберите время",
+      selectedDate: "Выбранная дата",
+      yourBooking: "Ваша запись",
+      at: "в",
+      confirmBooking: "Подтвердить запись",
+      pleaseSelectDate: "Сначала выберите дату в календаре",
+      weekDays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+      locale: "ru-RU",
     },
     contact: {
       subtitle: "Связаться с нами",
@@ -253,7 +237,7 @@ const translations: Record<Language, Translations> = {
       home: "Home",
       services: "Services",
       gallery: "Gallery",
-      benefits: "Benefits",
+      booking: "Date/Time",
       contact: "Contact",
       bookNow: "Book Now",
     },
@@ -339,41 +323,20 @@ const translations: Record<Language, Translations> = {
       before: "Before",
       after: "After",
     },
-    benefits: {
-      subtitle: "Why us",
-      title1: "Benefits of",
-      titleHighlight: "BM Detailing",
-      description:
-        "We don't just wash cars — we create a unique care experience for your vehicle",
-      items: [
-        {
-          title: "We come to you",
-          description:
-            "We'll arrive at any convenient location — home, office, or parking lot",
-        },
-        {
-          title: "Premium materials",
-          description:
-            "We use only professional car chemicals and equipment",
-        },
-        {
-          title: "Experienced masters",
-          description:
-            "Our specialists are trained and have years of experience",
-        },
-        {
-          title: "Quality guarantee",
-          description: "We provide warranty on all types of work and coatings",
-        },
-        {
-          title: "Convenient hours",
-          description: "We work daily from 8:00 to 22:00, including weekends",
-        },
-        {
-          title: "Transparent pricing",
-          description: "Fixed prices with no hidden fees or surcharges",
-        },
-      ],
+    booking: {
+      subtitle: "Online Booking",
+      title1: "Select",
+      titleHighlight: "date and time",
+      description: "Choose a convenient time to book detailing for your car",
+      selectDate: "Select date",
+      selectTime: "Select time",
+      selectedDate: "Selected date",
+      yourBooking: "Your booking",
+      at: "at",
+      confirmBooking: "Confirm booking",
+      pleaseSelectDate: "First select a date on the calendar",
+      weekDays: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      locale: "en-US",
     },
     contact: {
       subtitle: "Contact us",
@@ -411,7 +374,7 @@ const translations: Record<Language, Translations> = {
       home: "Sākums",
       services: "Pakalpojumi",
       gallery: "Galerija",
-      benefits: "Priekšrocības",
+      booking: "Datums/Laiks",
       contact: "Kontakti",
       bookNow: "Pieteikties",
     },
@@ -497,41 +460,20 @@ const translations: Record<Language, Translations> = {
       before: "Pirms",
       after: "Pēc",
     },
-    benefits: {
-      subtitle: "Kāpēc mēs",
-      title1: "Priekšrocības",
-      titleHighlight: "BM Detailing",
-      description:
-        "Mēs ne tikai mazgājam automašīnas — mēs radām unikālu aprūpes pieredzi jūsu transportlīdzeklim",
-      items: [
-        {
-          title: "Mēs ierodamies pie jums",
-          description:
-            "Mēs ieradīsimies jebkurā ērtā vietā — mājās, birojā vai stāvvietā",
-        },
-        {
-          title: "Premium materiāli",
-          description:
-            "Mēs izmantojam tikai profesionālu autoķīmiju un aprīkojumu",
-        },
-        {
-          title: "Pieredzējuši meistari",
-          description:
-            "Mūsu speciālisti ir apmācīti un viņiem ir daudzu gadu pieredze",
-        },
-        {
-          title: "Kvalitātes garantija",
-          description: "Mēs sniedzam garantiju visiem darbu un pārklājumu veidiem",
-        },
-        {
-          title: "Ērtas darba stundas",
-          description: "Strādājam katru dienu no 8:00 līdz 22:00, ieskaitot nedēļas nogales",
-        },
-        {
-          title: "Caurspīdīgas cenas",
-          description: "Fiksētas cenas bez slēptām maksām vai piemaksām",
-        },
-      ],
+    booking: {
+      subtitle: "Tiešsaistes rezervācija",
+      title1: "Izvēlieties",
+      titleHighlight: "datumu un laiku",
+      description: "Izvēlieties ērtu laiku, lai rezervētu detalizēšanu jūsu automašīnai",
+      selectDate: "Izvēlieties datumu",
+      selectTime: "Izvēlieties laiku",
+      selectedDate: "Izvēlētais datums",
+      yourBooking: "Jūsu rezervācija",
+      at: "plkst.",
+      confirmBooking: "Apstiprināt rezervāciju",
+      pleaseSelectDate: "Vispirms izvēlieties datumu kalendārā",
+      weekDays: ["Pr", "Ot", "Tr", "Ce", "Pk", "Se", "Sv"],
+      locale: "lv-LV",
     },
     contact: {
       subtitle: "Sazinieties ar mums",
