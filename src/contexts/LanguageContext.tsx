@@ -34,6 +34,7 @@ interface Translations {
     popular: string;
     select: string;
     currency: string;
+    whatIncluded: string;
     packages: {
       name: string;
       description: string;
@@ -129,6 +130,7 @@ const translations: Record<Language, Translations> = {
       popular: "ПОПУЛЯРНЫЙ",
       select: "Выбрать",
       currency: "€",
+      whatIncluded: "Что входит:",
       packages: [
         {
           name: "Экспресс-мойка",
@@ -266,6 +268,7 @@ const translations: Record<Language, Translations> = {
       popular: "POPULAR",
       select: "Select",
       currency: "€",
+      whatIncluded: "What's included:",
       packages: [
         {
           name: "Express Wash",
@@ -403,6 +406,7 @@ const translations: Record<Language, Translations> = {
       popular: "POPULĀRS",
       select: "Izvēlēties",
       currency: "€",
+      whatIncluded: "Kas iekļauts:",
       packages: [
         {
           name: "Ātrā mazgāšana",
