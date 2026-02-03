@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
 
@@ -8,6 +9,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,11 +20,11 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "#home", label: t.nav.home },
-    { href: "#services", label: t.nav.services },
-    { href: "#gallery", label: t.nav.gallery },
-    { href: "#booking", label: t.nav.booking },
-    { href: "#contact", label: t.nav.contact },
+    { href: "/", label: t.nav.home },
+    { href: "/services", label: t.nav.services },
+    { href: "/gallery", label: t.nav.gallery },
+    { href: "/booking", label: t.nav.booking },
+    { href: "/contact", label: t.nav.contact },
   ];
 
   const languages: { code: Language; label: string }[] = [
@@ -30,6 +32,13 @@ const Header = () => {
     { code: "en", label: "EN" },
     { code: "lv", label: "LV" },
   ];
+
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname === href;
+  };
 
   return (
     <header
@@ -77,13 +86,13 @@ const Header = () => {
         <div className="container mx-auto px-4 md:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <a href="#" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <img 
                 src={logo} 
                 alt="BM Detailing" 
                 className="h-14 md:h-16 w-auto"
               />
-            </a>
+            </Link>
 
             {/* Mobile Menu Button */}
             <button
@@ -102,18 +111,26 @@ const Header = () => {
         <div className="container mx-auto px-4 md:px-8">
           <nav className="flex items-center justify-center gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
-                className="relative px-6 py-4 text-sm font-medium text-primary-foreground/90 hover:text-primary-foreground hover:bg-white/10 transition-all duration-300 tracking-wider uppercase group"
+                to={link.href}
+                className={`relative px-6 py-4 text-sm font-medium transition-all duration-300 tracking-wider uppercase group ${
+                  isActive(link.href)
+                    ? "text-primary-foreground bg-white/10"
+                    : "text-primary-foreground/90 hover:text-primary-foreground hover:bg-white/10"
+                }`}
               >
                 {link.label}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary-foreground group-hover:w-3/4 transition-all duration-300" />
-              </a>
+                <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary-foreground transition-all duration-300 ${
+                  isActive(link.href) ? "w-3/4" : "w-0 group-hover:w-3/4"
+                }`} />
+              </Link>
             ))}
-            <Button variant="ghost" size="sm" className="ml-4 text-primary-foreground border border-primary-foreground/30 hover:bg-white/10 hover:text-primary-foreground">
-              {t.nav.bookNow}
-            </Button>
+            <Link to="/booking">
+              <Button variant="ghost" size="sm" className="ml-4 text-primary-foreground border border-primary-foreground/30 hover:bg-white/10 hover:text-primary-foreground">
+                {t.nav.bookNow}
+              </Button>
+            </Link>
           </nav>
         </div>
       </div>
@@ -123,14 +140,16 @@ const Header = () => {
         <div className="md:hidden absolute top-[8rem] left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-border animate-fade-in">
           <nav className="flex flex-col p-6 gap-2">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
-                className="text-lg font-medium text-foreground hover:text-primary transition-colors py-3 border-b border-border/30"
+                to={link.href}
+                className={`text-lg font-medium transition-colors py-3 border-b border-border/30 ${
+                  isActive(link.href) ? "text-primary" : "text-foreground hover:text-primary"
+                }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <div className="flex items-center gap-4 mt-4">
               <a
@@ -156,9 +175,11 @@ const Header = () => {
                 </button>
               ))}
             </div>
-            <Button variant="red" size="lg" className="mt-4">
-              {t.nav.bookNow}
-            </Button>
+            <Link to="/booking" onClick={() => setIsMobileMenuOpen(false)}>
+              <Button variant="red" size="lg" className="mt-4 w-full">
+                {t.nav.bookNow}
+              </Button>
+            </Link>
           </nav>
         </div>
       )}

@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, Sparkles, Shield, Car, Droplets } from "lucide-react";
+import { Check, Sparkles, Shield, Car, Droplets, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const serviceIcons = [Droplets, Sparkles, Shield, Car];
@@ -8,6 +9,15 @@ const servicePopular = [false, true, false, false];
 
 const Services = () => {
   const { t } = useLanguage();
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const handleMouseEnter = (index: number) => {
+    setExpandedIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setExpandedIndex(null);
+  };
 
   return (
     <section id="services" className="section-padding bg-gradient-dark">
@@ -31,100 +41,129 @@ const Services = () => {
             const Icon = serviceIcons[index];
             const popular = servicePopular[index];
             const price = servicePrices[index];
+            const isExpanded = expandedIndex === index;
 
             return (
               <div
                 key={index}
-                className={`relative group rounded-2xl p-6 transition-all duration-500 hover-lift ${
-                  popular
-                    ? "bg-gradient-red red-glow"
-                    : "glass-card hover:border-primary/50"
-                }`}
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="relative"
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={handleMouseLeave}
               >
-                {/* Popular Badge */}
-                {popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-background rounded-full text-xs font-semibold text-primary tracking-wider">
-                    {t.services.popular}
-                  </div>
-                )}
-
-                {/* Icon */}
                 <div
-                  className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${
-                    popular ? "bg-white/20" : "bg-primary/10"
+                  className={`relative group rounded-2xl p-6 transition-all duration-500 hover-lift cursor-pointer ${
+                    popular
+                      ? "bg-gradient-red red-glow"
+                      : "glass-card hover:border-primary/50"
                   }`}
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <Icon
-                    className={`w-7 h-7 ${
-                      popular ? "text-white" : "text-primary"
-                    }`}
-                  />
-                </div>
+                  {/* Popular Badge */}
+                  {popular && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-background rounded-full text-xs font-semibold text-primary tracking-wider">
+                      {t.services.popular}
+                    </div>
+                  )}
 
-                {/* Content */}
-                <h3
-                  className={`text-xl font-bold mb-2 ${
-                    popular ? "text-white" : "text-foreground"
-                  }`}
-                >
-                  {service.name}
-                </h3>
-                <p
-                  className={`text-sm mb-6 ${
-                    popular ? "text-white/80" : "text-muted-foreground"
-                  }`}
-                >
-                  {service.description}
-                </p>
-
-                {/* Price */}
-                <div className="mb-6">
-                  <span
-                    className={`text-3xl font-bold ${
-                      popular ? "text-white" : "text-gradient-red"
+                  {/* Icon */}
+                  <div
+                    className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${
+                      popular ? "bg-white/20" : "bg-primary/10"
                     }`}
                   >
-                    {price}
-                  </span>
-                  <span
-                    className={`text-sm ml-1 ${
+                    <Icon
+                      className={`w-7 h-7 ${
+                        popular ? "text-white" : "text-primary"
+                      }`}
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <h3
+                    className={`text-xl font-bold mb-2 ${
+                      popular ? "text-white" : "text-foreground"
+                    }`}
+                  >
+                    {service.name}
+                  </h3>
+                  <p
+                    className={`text-sm mb-6 ${
                       popular ? "text-white/80" : "text-muted-foreground"
                     }`}
                   >
-                    {t.services.currency}
-                  </span>
+                    {service.description}
+                  </p>
+
+                  {/* Price */}
+                  <div className="mb-6">
+                    <span
+                      className={`text-3xl font-bold ${
+                        popular ? "text-white" : "text-gradient-red"
+                      }`}
+                    >
+                      {price}
+                    </span>
+                    <span
+                      className={`text-sm ml-1 ${
+                        popular ? "text-white/80" : "text-muted-foreground"
+                      }`}
+                    >
+                      {t.services.currency}
+                    </span>
+                  </div>
+
+                  {/* Expand indicator */}
+                  <div className={`flex items-center justify-center gap-2 mb-4 ${
+                    popular ? "text-white/80" : "text-muted-foreground"
+                  }`}>
+                    <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
+                  </div>
+
+                  {/* Button */}
+                  <Button
+                    variant={popular ? "default" : "redOutline"}
+                    className={`w-full ${
+                      popular ? "bg-white text-primary hover:bg-white/90" : ""
+                    }`}
+                  >
+                    {t.services.select}
+                  </Button>
                 </div>
 
-                {/* Features */}
-                <ul className="space-y-3 mb-8">
-                  {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <Check
-                        className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
-                          popular ? "text-white" : "text-primary"
-                        }`}
-                      />
-                      <span
-                        className={`text-sm ${
-                          popular ? "text-white/90" : "text-muted-foreground"
-                        }`}
-                      >
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Button */}
-                <Button
-                  variant={popular ? "default" : "redOutline"}
-                  className={`w-full ${
-                    popular ? "bg-white text-primary hover:bg-white/90" : ""
+                {/* Expanded Features Panel */}
+                <div 
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                    isExpanded ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
                   }`}
                 >
-                  {t.services.select}
-                </Button>
+                <div className={`rounded-2xl p-6 ${
+                    popular ? "bg-gradient-red/80" : "glass-card"
+                  }`}>
+                    <h4 className={`text-lg font-semibold mb-4 ${
+                      popular ? "text-white" : "text-foreground"
+                    }`}>
+                      {t.services.whatIncluded}
+                    </h4>
+                    <ul className="space-y-3">
+                      {service.features.map((feature, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <Check
+                            className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                              popular ? "text-white" : "text-primary"
+                            }`}
+                          />
+                          <span
+                            className={`text-sm ${
+                              popular ? "text-white/90" : "text-muted-foreground"
+                            }`}
+                          >
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
             );
           })}
