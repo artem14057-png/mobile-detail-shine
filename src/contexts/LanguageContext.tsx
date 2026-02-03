@@ -63,6 +63,16 @@ interface Translations {
     pleaseSelectDate: string;
     weekDays: string[];
     locale: string;
+    step1: string;
+    step2: string;
+    step3: string;
+    next: string;
+    back: string;
+    selectServices: string;
+    selectServicesDesc: string;
+    total: string;
+    summary: string;
+    selectedServices: string;
   };
   contact: {
     subtitle: string;
@@ -76,6 +86,12 @@ interface Translations {
     hoursValue: string;
     area: string;
     areaValue: string;
+    infoTitle: string;
+    mapTitle: string;
+    greenZone: string;
+    greenZoneDesc: string;
+    yellowZone: string;
+    yellowZoneDesc: string;
     formTitle: string;
     formDescription: string;
     nameLabel: string;
@@ -202,6 +218,16 @@ const translations: Record<Language, Translations> = {
       pleaseSelectDate: "Сначала выберите дату в календаре",
       weekDays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
       locale: "ru-RU",
+      step1: "Дата и время",
+      step2: "Услуги",
+      step3: "Заявка",
+      next: "Далее",
+      back: "Назад",
+      selectServices: "Выберите услуги",
+      selectServicesDesc: "Отметьте услуги, которые вас интересуют",
+      total: "Итого",
+      summary: "Ваша запись",
+      selectedServices: "Выбранные услуги",
     },
     contact: {
       subtitle: "Связаться с нами",
@@ -216,6 +242,12 @@ const translations: Record<Language, Translations> = {
       hoursValue: "Ежедневно 8:00 - 22:00",
       area: "Зона обслуживания",
       areaValue: "Рига и окрестности (до 30 км)",
+      infoTitle: "Контактная информация",
+      mapTitle: "Зона обслуживания",
+      greenZone: "Рига",
+      greenZoneDesc: "бесплатный выезд",
+      yellowZone: "+30 км",
+      yellowZoneDesc: "выезд за доп. плату",
       formTitle: "Оставить заявку",
       formDescription: "Заполните форму и мы свяжемся с вами",
       nameLabel: "Ваше имя",
@@ -340,6 +372,16 @@ const translations: Record<Language, Translations> = {
       pleaseSelectDate: "First select a date on the calendar",
       weekDays: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       locale: "en-US",
+      step1: "Date & Time",
+      step2: "Services",
+      step3: "Request",
+      next: "Next",
+      back: "Back",
+      selectServices: "Select services",
+      selectServicesDesc: "Check the services you are interested in",
+      total: "Total",
+      summary: "Your booking",
+      selectedServices: "Selected services",
     },
     contact: {
       subtitle: "Contact us",
@@ -354,6 +396,12 @@ const translations: Record<Language, Translations> = {
       hoursValue: "Daily 8:00 - 22:00",
       area: "Service area",
       areaValue: "Riga and surroundings (up to 30 km)",
+      infoTitle: "Contact information",
+      mapTitle: "Service area",
+      greenZone: "Riga",
+      greenZoneDesc: "free service",
+      yellowZone: "+30 km",
+      yellowZoneDesc: "additional fee",
       formTitle: "Leave a request",
       formDescription: "Fill out the form and we'll contact you",
       nameLabel: "Your name",
@@ -478,6 +526,16 @@ const translations: Record<Language, Translations> = {
       pleaseSelectDate: "Vispirms izvēlieties datumu kalendārā",
       weekDays: ["Pr", "Ot", "Tr", "Ce", "Pk", "Se", "Sv"],
       locale: "lv-LV",
+      step1: "Datums un laiks",
+      step2: "Pakalpojumi",
+      step3: "Pieteikums",
+      next: "Tālāk",
+      back: "Atpakaļ",
+      selectServices: "Izvēlieties pakalpojumus",
+      selectServicesDesc: "Atzīmējiet pakalpojumus, kas jūs interesē",
+      total: "Kopā",
+      summary: "Jūsu rezervācija",
+      selectedServices: "Izvēlētie pakalpojumi",
     },
     contact: {
       subtitle: "Sazinieties ar mums",
@@ -492,6 +550,12 @@ const translations: Record<Language, Translations> = {
       hoursValue: "Katru dienu 8:00 - 22:00",
       area: "Apkalpošanas zona",
       areaValue: "Rīga un apkārtne (līdz 30 km)",
+      infoTitle: "Kontaktinformācija",
+      mapTitle: "Apkalpošanas zona",
+      greenZone: "Rīga",
+      greenZoneDesc: "bezmaksas izbraukums",
+      yellowZone: "+30 km",
+      yellowZoneDesc: "par papildu samaksu",
       formTitle: "Atstāt pieprasījumu",
       formDescription: "Aizpildiet veidlapu un mēs sazināsimies ar jums",
       nameLabel: "Jūsu vārds",
