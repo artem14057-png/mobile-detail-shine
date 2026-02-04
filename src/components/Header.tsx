@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -6,16 +6,29 @@ import logo from "@/assets/logo.png";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      
+      // Show header when scrolling up or at top
+      if (currentScrollY < lastScrollY.current || currentScrollY < 100) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        // Hide header when scrolling down and past threshold
+        setIsVisible(false);
+        setIsMobileMenuOpen(false);
+      }
+      
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll);
+    
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -42,57 +55,45 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-background/98 backdrop-blur-xl shadow-lg"
-          : "bg-background/80 backdrop-blur-sm"
+      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      {/* Top Bar - Logo and Contact */}
-      <div className="bg-[#4a1942]">
+      {/* Logo Section - Dark background */}
+      <div className="bg-background border-b border-border/20">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="flex items-center justify-between h-12">
-            {/* Phone */}
-            <a
-              href="tel:+37120000000"
-              className="hidden md:flex items-center gap-2 text-sm text-[#d4af37] hover:text-[#f0d060] transition-colors"
-            >
-              <Phone className="w-4 h-4" />
-              <span>+371 20 000 000</span>
-            </a>
+          <div className="flex items-center justify-center py-6">
+            <Link to="/" className="flex items-center">
+              <img 
+                src={logo} 
+                alt="BM Detailing" 
+                className="h-16 md:h-20 w-auto"
+              />
+            </Link>
+          </div>
+        </div>
+      </div>
 
-            {/* Language Switcher */}
-            <div className="flex items-center gap-4 ml-auto">
+      {/* Secondary Bar - Language & Phone */}
+      <div className="bg-background/95 border-b border-border/20">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="flex items-center justify-between h-10">
+            {/* Language Switcher - Left */}
+            <div className="flex items-center gap-3">
               {languages.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => setLanguage(lang.code)}
                   className={`text-sm font-medium tracking-wider transition-colors ${
                     language === lang.code
-                      ? "text-[#d4af37]"
-                      : "text-white/80 hover:text-[#d4af37]"
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {lang.label}
                 </button>
               ))}
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Logo Bar */}
-      <div className="border-b border-border/30">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link to="/" className="flex items-center">
-              <img 
-                src={logo} 
-                alt="BM Detailing" 
-                className="h-14 md:h-16 w-auto"
-              />
-            </Link>
 
             {/* Mobile Menu Button */}
             <button
@@ -101,13 +102,21 @@ const Header = () => {
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
+
+            {/* Phone - Right */}
+            <a
+              href="tel:+37120000000"
+              className="hidden md:flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors font-medium"
+            >
+              <Phone className="w-4 h-4" />
+              <span>+371 20 000 000</span>
+            </a>
           </div>
         </div>
       </div>
 
-
-      {/* Navigation Bar */}
-      <div className="hidden md:block bg-primary/95">
+      {/* Navigation Bar - Red */}
+      <div className="hidden md:block bg-primary">
         <div className="container mx-auto px-4 md:px-8">
           <nav className="flex items-center justify-center gap-1">
             {navLinks.map((link) => (
@@ -127,7 +136,10 @@ const Header = () => {
               </Link>
             ))}
             <Link to="/booking">
-              <Button variant="ghost" size="sm" className="ml-4 text-primary-foreground border border-primary-foreground/30 hover:bg-white/10 hover:text-primary-foreground">
+              <Button 
+                size="sm" 
+                className="ml-4 bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-medium tracking-wider"
+              >
                 {t.nav.bookNow}
               </Button>
             </Link>
@@ -137,7 +149,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-[8rem] left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-border animate-fade-in">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-border animate-fade-in">
           <nav className="flex flex-col p-6 gap-2">
             {navLinks.map((link) => (
               <Link
@@ -154,7 +166,7 @@ const Header = () => {
             <div className="flex items-center gap-4 mt-4">
               <a
                 href="tel:+37120000000"
-                className="flex items-center gap-2 text-sm text-muted-foreground"
+                className="flex items-center gap-2 text-sm text-primary"
               >
                 <Phone className="w-4 h-4" />
                 <span>+371 20 000 000</span>
@@ -167,8 +179,8 @@ const Header = () => {
                   onClick={() => setLanguage(lang.code)}
                   className={`px-3 py-1 rounded text-sm transition-colors ${
                     language === lang.code
-                      ? "bg-[#4a1942] text-[#d4af37]"
-                      : "text-muted-foreground hover:text-[#d4af37]"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {lang.label}
@@ -176,7 +188,7 @@ const Header = () => {
               ))}
             </div>
             <Link to="/booking" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button variant="red" size="lg" className="mt-4 w-full">
+              <Button size="lg" className="mt-4 w-full">
                 {t.nav.bookNow}
               </Button>
             </Link>
