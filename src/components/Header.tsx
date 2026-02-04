@@ -2,11 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logoHeader from "@/assets/logo-header.png";
+import logo from "@/assets/logo.png";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [showNav, setShowNav] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
@@ -16,9 +15,6 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
-      // Check if we've scrolled past the header
-      setIsScrolled(currentScrollY > 200);
       
       // Show nav when scrolling up (after being scrolled down)
       if (currentScrollY < lastScrollY.current && currentScrollY > 200) {
@@ -57,34 +53,47 @@ const Header = () => {
 
   return (
     <>
-      {/* Static Header - Always visible at top */}
+      {/* Static Header */}
       <header className="relative z-40">
-        {/* Logo Section - Dark background with new logo */}
-        <div className="bg-background">
-          <div className="container mx-auto px-4 md:px-8">
-            <div className="flex items-center justify-center py-4">
-              <Link to="/" className="flex flex-col items-center">
+        {/* Logo Section with reflection effect */}
+        <div className="relative bg-background overflow-hidden">
+          {/* Subtle vignette overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,hsl(var(--background))_70%)] pointer-events-none" />
+          
+          {/* Content */}
+          <div className="container mx-auto px-4 md:px-8 relative">
+            <div className="flex flex-col items-center justify-center pt-8 pb-4">
+              {/* Logo */}
+              <Link to="/" className="flex flex-col items-center group">
                 <img 
-                  src={logoHeader} 
+                  src={logo} 
                   alt="BM Detailing" 
-                  className="h-20 md:h-28 w-auto object-contain"
+                  className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 />
+                {/* Tagline */}
+                <p className="mt-2 text-xs md:text-sm tracking-[0.3em] text-muted-foreground font-light uppercase">
+                  We don't clean - We rebuild the vibe
+                </p>
               </Link>
             </div>
           </div>
+          
+          {/* Floor reflection effect */}
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white/[0.02] via-white/[0.01] to-transparent pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
         </div>
 
         {/* Secondary Bar - Language & Phone */}
-        <div className="bg-background border-b border-border/20">
+        <div className="bg-background/80 backdrop-blur-sm border-b border-white/5">
           <div className="container mx-auto px-4 md:px-8">
-            <div className="flex items-center justify-between h-10">
+            <div className="flex items-center justify-between h-12">
               {/* Language Switcher - Left */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4">
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => setLanguage(lang.code)}
-                    className={`text-sm font-medium tracking-wider transition-colors ${
+                    className={`text-sm font-medium tracking-widest transition-all duration-300 ${
                       language === lang.code
                         ? "text-foreground"
                         : "text-muted-foreground hover:text-foreground"
@@ -106,10 +115,10 @@ const Header = () => {
               {/* Phone - Right */}
               <a
                 href="tel:+37120000000"
-                className="hidden md:flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors font-medium"
+                className="hidden md:flex items-center gap-2 text-sm transition-colors font-medium group"
               >
-                <Phone className="w-4 h-4" />
-                <span>+371 20 000 000</span>
+                <Phone className="w-4 h-4 text-primary group-hover:text-primary/80 transition-colors" />
+                <span className="text-muted-foreground group-hover:text-foreground transition-colors">+371 20 000 000</span>
               </a>
             </div>
           </div>
@@ -138,7 +147,7 @@ const Header = () => {
               <Link to="/booking">
                 <Button 
                   size="sm" 
-                  className="ml-4 bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-medium tracking-wider"
+                  className="ml-4 bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-medium tracking-wider transition-all duration-300"
                 >
                   {t.nav.bookNow}
                 </Button>
@@ -225,7 +234,7 @@ const Header = () => {
               <Link to="/booking">
                 <Button 
                   size="sm" 
-                  className="ml-4 bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-medium tracking-wider"
+                  className="ml-4 bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-medium tracking-wider transition-all duration-300"
                 >
                   {t.nav.bookNow}
                 </Button>
