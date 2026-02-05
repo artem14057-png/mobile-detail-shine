@@ -62,18 +62,14 @@ const Header = () => {
           
           {/* Content */}
           <div className="container mx-auto px-4 md:px-8 relative">
-            <div className="flex flex-col items-center justify-center pt-8 pb-4">
+            <div className="flex flex-col items-center justify-center py-6 md:py-8">
               {/* Logo */}
               <Link to="/" className="flex flex-col items-center group">
                 <img 
                   src={logo} 
                   alt="BM Detailing" 
-                  className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="h-20 md:h-28 lg:h-32 w-auto object-contain transition-all duration-500 group-hover:scale-105 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
                 />
-                {/* Tagline */}
-                <p className="mt-2 text-xs md:text-sm tracking-[0.3em] text-muted-foreground font-light uppercase">
-                  We don't clean - We rebuild the vibe
-                </p>
               </Link>
             </div>
           </div>
