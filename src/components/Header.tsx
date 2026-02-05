@@ -55,33 +55,26 @@ const Header = () => {
     <>
       {/* Static Header */}
       <header className="relative z-40">
-        {/* Logo Section with reflection effect */}
+        {/* Logo & Secondary Bar - unified black background */}
         <div className="relative bg-black overflow-hidden">
           {/* Subtle vignette overlay */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,black_70%)] pointer-events-none" />
           
           {/* Content */}
           <div className="container mx-auto px-4 md:px-8 relative">
-            <div className="flex flex-col items-center justify-center py-10 md:py-14">
-              {/* Logo */}
+            {/* Logo */}
+            <div className="flex flex-col items-center justify-center py-12 md:py-16">
               <Link to="/" className="flex flex-col items-center group">
                 <img 
                   src={logo} 
                   alt="BM Detailing" 
-                  className="h-36 md:h-52 lg:h-64 w-auto object-contain transition-all duration-500 group-hover:scale-105"
+                  className="h-44 md:h-64 lg:h-80 w-auto object-contain transition-all duration-500 group-hover:scale-105"
                 />
               </Link>
             </div>
-          </div>
-          
-          {/* Gradient fade to main background */}
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent via-black/80 to-[hsl(0,0%,4%)] pointer-events-none" />
-        </div>
 
-        {/* Secondary Bar - Language & Phone */}
-        <div className="bg-background/80 backdrop-blur-sm border-b border-white/5">
-          <div className="container mx-auto px-4 md:px-8">
-            <div className="flex items-center justify-between h-12">
+            {/* Language & Phone Bar */}
+            <div className="flex items-center justify-between py-4 border-t border-white/10">
               {/* Language Switcher - Left */}
               <div className="flex items-center gap-4">
                 {languages.map((lang) => (
@@ -90,8 +83,8 @@ const Header = () => {
                     onClick={() => setLanguage(lang.code)}
                     className={`text-sm font-medium tracking-widest transition-all duration-300 ${
                       language === lang.code
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
+                        ? "text-white"
+                        : "text-white/50 hover:text-white"
                     }`}
                   >
                     {lang.label}
@@ -101,7 +94,7 @@ const Header = () => {
 
               {/* Mobile Menu Button */}
               <button
-                className="md:hidden text-foreground p-2"
+                className="md:hidden text-white p-2"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -113,10 +106,13 @@ const Header = () => {
                 className="hidden md:flex items-center gap-2 text-sm transition-colors font-medium group"
               >
                 <Phone className="w-4 h-4 text-primary group-hover:text-primary/80 transition-colors" />
-                <span className="text-muted-foreground group-hover:text-foreground transition-colors">+371 20 000 000</span>
+                <span className="text-white/70 group-hover:text-white transition-colors">+371 20 000 000</span>
               </a>
             </div>
           </div>
+          
+          {/* Gradient fade to main background */}
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[hsl(0,0%,4%)] pointer-events-none" />
         </div>
 
         {/* Navigation Bar - Red */}
