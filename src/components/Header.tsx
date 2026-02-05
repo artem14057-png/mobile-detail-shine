@@ -56,19 +56,19 @@ const Header = () => {
       {/* Static Header */}
       <header className="relative z-40">
         {/* Logo Section with reflection effect */}
-        <div className="relative bg-background overflow-hidden">
+        <div className="relative bg-black overflow-hidden">
           {/* Subtle vignette overlay */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,hsl(var(--background))_70%)] pointer-events-none" />
           
           {/* Content */}
           <div className="container mx-auto px-4 md:px-8 relative">
-            <div className="flex flex-col items-center justify-center py-6 md:py-8">
+            <div className="flex flex-col items-center justify-center py-8 md:py-10">
               {/* Logo */}
               <Link to="/" className="flex flex-col items-center group">
                 <img 
                   src={logo} 
                   alt="BM Detailing" 
-                  className="h-20 md:h-28 lg:h-32 w-auto object-contain transition-all duration-500 group-hover:scale-105"
+                  className="h-28 md:h-40 lg:h-48 w-auto object-contain transition-all duration-500 group-hover:scale-105"
                 />
               </Link>
             </div>
