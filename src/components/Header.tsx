@@ -58,25 +58,24 @@ const Header = () => {
         {/* Logo Section with reflection effect */}
         <div className="relative bg-black overflow-hidden">
           {/* Subtle vignette overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,hsl(var(--background))_70%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,black_70%)] pointer-events-none" />
           
           {/* Content */}
           <div className="container mx-auto px-4 md:px-8 relative">
-            <div className="flex flex-col items-center justify-center py-8 md:py-10">
+            <div className="flex flex-col items-center justify-center py-10 md:py-14">
               {/* Logo */}
               <Link to="/" className="flex flex-col items-center group">
                 <img 
                   src={logo} 
                   alt="BM Detailing" 
-                  className="h-28 md:h-40 lg:h-48 w-auto object-contain transition-all duration-500 group-hover:scale-105"
+                  className="h-36 md:h-52 lg:h-64 w-auto object-contain transition-all duration-500 group-hover:scale-105"
                 />
               </Link>
             </div>
           </div>
           
-          {/* Floor reflection effect */}
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white/[0.02] via-white/[0.01] to-transparent pointer-events-none" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          {/* Gradient fade to main background */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent via-black/80 to-[hsl(0,0%,4%)] pointer-events-none" />
         </div>
 
         {/* Secondary Bar - Language & Phone */}
