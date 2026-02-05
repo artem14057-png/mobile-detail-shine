@@ -68,7 +68,7 @@ const Header = () => {
                 <img 
                   src={logo} 
                   alt="BM Detailing" 
-                  className="h-20 md:h-28 lg:h-32 w-auto object-contain transition-all duration-500 group-hover:scale-105 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                  className="h-20 md:h-28 lg:h-32 w-auto object-contain transition-all duration-500 group-hover:scale-105"
                 />
               </Link>
             </div>
