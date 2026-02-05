@@ -63,12 +63,12 @@ const Header = () => {
           {/* Content */}
           <div className="container mx-auto px-4 md:px-8 relative">
             {/* Logo */}
-            <div className="flex flex-col items-center justify-center py-12 md:py-16">
+            <div className="flex flex-col items-center justify-center py-6 md:py-8">
               <Link to="/" className="flex flex-col items-center group">
                 <img 
                   src={logo} 
                   alt="BM Detailing" 
-                  className="h-44 md:h-64 lg:h-80 w-auto object-contain transition-all duration-500 group-hover:scale-105"
+                  className="h-52 md:h-72 lg:h-96 w-auto object-contain transition-all duration-500 group-hover:scale-105"
                 />
               </Link>
             </div>
@@ -81,10 +81,10 @@ const Header = () => {
                   <button
                     key={lang.code}
                     onClick={() => setLanguage(lang.code)}
-                    className={`text-sm font-medium tracking-widest transition-all duration-300 ${
+                    className={`text-sm font-semibold tracking-widest transition-all duration-300 ${
                       language === lang.code
-                        ? "text-white"
-                        : "text-white/50 hover:text-white"
+                        ? "text-primary"
+                        : "text-white/80 hover:text-primary"
                     }`}
                   >
                     {lang.label}
@@ -103,10 +103,10 @@ const Header = () => {
               {/* Phone - Right */}
               <a
                 href="tel:+37120000000"
-                className="hidden md:flex items-center gap-2 text-sm transition-colors font-medium group"
+                className="hidden md:flex items-center gap-2 text-sm transition-colors font-semibold group"
               >
-                <Phone className="w-4 h-4 text-primary group-hover:text-primary/80 transition-colors" />
-                <span className="text-white/70 group-hover:text-white transition-colors">+371 20 000 000</span>
+                <Phone className="w-4 h-4 text-primary" />
+                <span className="text-white group-hover:text-primary transition-colors">+371 20 000 000</span>
               </a>
             </div>
           </div>
