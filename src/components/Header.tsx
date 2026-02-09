@@ -63,7 +63,7 @@ const Header = () => {
           {/* Content */}
           <div className="container mx-auto px-4 md:px-8 relative">
             {/* Logo */}
-            <div className="flex flex-col items-center justify-center py-6 md:py-8">
+            <div className="flex flex-col items-center justify-center py-2 md:py-3">
               <Link to="/" className="flex flex-col items-center group">
                 <img 
                   src={logo} 
@@ -81,10 +81,10 @@ const Header = () => {
                   <button
                     key={lang.code}
                     onClick={() => setLanguage(lang.code)}
-                    className={`text-sm font-semibold tracking-widest transition-all duration-300 ${
+                    className={`text-base font-bold tracking-widest transition-all duration-300 ${
                       language === lang.code
-                        ? "text-primary"
-                        : "text-white/80 hover:text-primary"
+                        ? "text-red-500 drop-shadow-[0_0_6px_rgba(239,68,68,0.5)]"
+                        : "text-white hover:text-red-400"
                     }`}
                   >
                     {lang.label}
@@ -105,8 +105,8 @@ const Header = () => {
                 href="tel:+37120000000"
                 className="hidden md:flex items-center gap-2 text-sm transition-colors font-semibold group"
               >
-                <Phone className="w-4 h-4 text-primary" />
-                <span className="text-white group-hover:text-primary transition-colors">+371 20 000 000</span>
+                <Phone className="w-5 h-5 text-red-500" />
+                <span className="text-white font-bold text-base group-hover:text-red-400 transition-colors">+371 20 000 000</span>
               </a>
             </div>
           </div>
