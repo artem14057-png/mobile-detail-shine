@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, Sparkles, Shield, Car, Droplets, ChevronDown } from "lucide-react";
+import { Check, ChevronDown, Armchair, CarFront, Package } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const serviceIcons = [Droplets, Sparkles, Shield, Car];
-const servicePrices = ["25", "55", "120", "250"];
-const servicePopular = [false, true, false, false];
+const serviceIcons = [Armchair, CarFront, Package];
+const servicePrices = ["80", "70", "130"];
+const servicePopular = [false, false, true];
 
 const Services = () => {
   const { t } = useLanguage();
@@ -35,9 +35,9 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {t.services.packages.map((service, index) => {
+        {/* Services Grid - 3 columns */}
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {t.services.packages.slice(0, 3).map((service, index) => {
             const Icon = serviceIcons[index];
             const popular = servicePopular[index];
             const price = servicePrices[index];
@@ -65,14 +65,14 @@ const Services = () => {
                     </div>
                   )}
 
-                  {/* Icon */}
+                  {/* Icon - larger illustration area */}
                   <div
-                    className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${
+                    className={`w-20 h-20 rounded-2xl flex items-center justify-center mb-6 mx-auto ${
                       popular ? "bg-white/20" : "bg-primary/10"
                     }`}
                   >
                     <Icon
-                      className={`w-7 h-7 ${
+                      className={`w-10 h-10 ${
                         popular ? "text-white" : "text-primary"
                       }`}
                     />
@@ -80,14 +80,14 @@ const Services = () => {
 
                   {/* Content */}
                   <h3
-                    className={`text-xl font-bold mb-2 ${
+                    className={`text-xl font-bold mb-2 text-center ${
                       popular ? "text-white" : "text-foreground"
                     }`}
                   >
                     {service.name}
                   </h3>
                   <p
-                    className={`text-sm mb-6 ${
+                    className={`text-sm mb-6 text-center ${
                       popular ? "text-white/80" : "text-muted-foreground"
                     }`}
                   >
@@ -95,7 +95,7 @@ const Services = () => {
                   </p>
 
                   {/* Price */}
-                  <div className="mb-6">
+                  <div className="mb-6 text-center">
                     <span
                       className={`text-3xl font-bold ${
                         popular ? "text-white" : "text-gradient-red"
