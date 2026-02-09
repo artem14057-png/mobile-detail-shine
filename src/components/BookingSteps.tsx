@@ -6,8 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const serviceIcons = [Droplets, Sparkles, Shield, Car];
-const servicePrices = [25, 55, 120, 250];
+const serviceIcons = [Sparkles, Shield, Car];
+const servicePrices = [80, 70, 130];
 
 type BookingStep = "datetime" | "services" | "contact";
 

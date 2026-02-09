@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
@@ -34,7 +34,7 @@ const Header = () => {
     { href: "/", label: t.nav.home },
     { href: "/services", label: t.nav.services },
     { href: "/gallery", label: t.nav.gallery },
-    { href: "/booking", label: t.nav.booking },
+    { href: "/calendar", label: t.nav.booking },
     { href: "/contact", label: t.nav.contact },
   ];
 
@@ -54,7 +54,7 @@ const Header = () => {
   return (
     <>
       {/* Compact Header */}
-      <header className="relative z-40 bg-background">
+      <header className="relative z-40 bg-background" style={{ background: 'hsl(0, 0%, 4%)' }}>
         <div className="container mx-auto px-4 md:px-8">
           <div className="flex items-center justify-between py-3">
             {/* Logo - Left */}
@@ -102,15 +102,6 @@ const Header = () => {
                 ))}
               </div>
 
-              {/* Phone */}
-              <a
-                href="tel:+37120000000"
-                className="flex items-center gap-2 text-sm font-bold group"
-              >
-                <Phone className="w-4 h-4 text-primary" />
-                <span className="text-foreground group-hover:text-primary transition-colors">+371 20 000 000</span>
-              </a>
-
               {/* Book Now */}
               <Link to="/booking">
                 <Button 
@@ -149,12 +140,6 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
-            <div className="flex items-center gap-4 mt-4">
-              <a href="tel:+37120000000" className="flex items-center gap-2 text-sm text-primary">
-                <Phone className="w-4 h-4" />
-                <span>+371 20 000 000</span>
-              </a>
-            </div>
             <div className="flex items-center gap-2 mt-4">
               {languages.map((lang) => (
                 <button
