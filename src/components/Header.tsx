@@ -63,12 +63,12 @@ const Header = () => {
           {/* Content */}
           <div className="container mx-auto px-4 md:px-8 relative">
             {/* Logo */}
-            <div className="flex flex-col items-center justify-center py-2 md:py-3">
+            <div className="flex flex-col items-center justify-center py-0">
               <Link to="/" className="flex flex-col items-center group">
                 <img 
                   src={logo} 
                   alt="BM Detailing" 
-                  className="h-52 md:h-72 lg:h-96 w-auto object-contain transition-all duration-500 group-hover:scale-105"
+                  className="h-32 md:h-40 lg:h-52 w-auto object-contain transition-all duration-500 group-hover:scale-105"
                 />
               </Link>
             </div>
